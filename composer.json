@@ -1,0 +1,11 @@
+{
+  "autoload": {
+    "psr-4": {
+      "app\\": "app"
+    }
+  },
+  "require": {
+    "gabordemooij/redbean": "dev-master",
+    "vitalbu/myblog": "^1.0.1"
+  }
+}

@@ -1,0 +1,244 @@
+body {
+    background: #fff;
+    font-family: 'Lato', sans-serif;
+}
+
+body a {
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../fonts/Lato-Regular.eot'); /* IE9 Compat Modes */
+    src: local('Lato'), local('Lato-Regular'), url('../fonts/Lato-Regular.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */ url('../fonts/Lato-Regular.woff2') format('woff2'), /* Modern Browsers */ url('../fonts/Lato-Regular.woff') format('woff'),
+        /* Modern Browsers */ url('../fonts/Lato-Regular.ttf') format('truetype');
+    font-display: swap;
+    font-style: normal;
+    font-weight: normal;
+}
+
+main {
+    > .container,
+    > .container-fluid {padding: 70px 15px 20px;}
+}
+
+header {
+    // Приветствие user
+    .accost {color:#ffffff;}
+}
+
+.footer {
+    background-color: #f5f5f5;font-size: .9em;height: 60px;
+
+    .footer > .container,
+    .footer > .container-fluid {
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+/* style breadcrumb widget as in previous bootstrap versions */
+.breadcrumb {
+    background-color: var(--bs-gray-200);
+    border-radius: .25rem;
+    padding: .75rem 1rem;
+
+    li {
+        padding: 0 10px;
+
+        &:first-child {
+            padding-left: 0;
+        }
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+}
+
+.breadcrumb-item > a
+{
+    text-decoration: none;
+}
+
+.warn-info {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+/**********/
+/* Albums */
+/**********/
+.album-item {
+    width: 300px;
+    margin: 0 auto 20px auto;
+    padding: 10px 10px 0 10px;
+    border: 1px solid #eee;
+    background: white;
+    font-family: "Open Sans";
+    overflow: hidden;
+    transition: .4s linear;
+
+    .img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 280px;
+        transition: 1s ease-in-out;
+
+        &:hover {transform: scale(1.1);}
+        img {display: block;width: 100%;}
+    }
+}
+
+.list {
+    margin-top: 15px;
+
+    h3 {font-weight: 700;color: #39404B;margin: 0;text-transform: uppercase;font-size: 14px;line-height: 2;}
+
+    .actions {border-top: 1px solid #eee;}
+    .actions {border-bottom: 1px solid #eee;}
+
+    .text {
+        padding: 5px 0;
+    }
+}
+
+.add-to-links {
+    //float: left;
+    //display: flex;
+    //justify-content: space-between;
+
+    .like, .dislike, .comment, .edit {
+        color: #8C877C;padding-left: 20px;transition: .4s linear;
+
+        &:hover {color: #E34D38;}
+
+        &:after {display: inline-block;font-family: FontAwesome;font-size: 13px;}
+    }
+}
+
+////////////////////
+////// like
+////////////////////
+.like-outer {
+    display: flex;
+    justify-content: space-between;
+
+    ul {
+        list-style: none;margin: 0;padding:0;
+
+        li {
+            display: inline-block;margin: 0 5px 0 0;
+
+            a {
+                width: 100%;
+                padding: 10px;
+                font-size: 20px;
+                color: #8C877C;
+                float: left;
+                -webkit-user-select: none; /* Safari */
+                -moz-user-select: none; /* Firefox */
+                -ms-user-select: none; /* IE10+/Edge */
+                user-select: none; /* Standard */
+
+                &.active {
+                    .fas {font-size: 20px; color:red;}
+                    .far {font-size: 0;}
+                }
+
+                &.like,
+                &.dislike,
+                &.comment {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    i {float: left;}
+    .fas {font-size: 0;}
+}
+.like-no {font-size: 20px;}
+
+////////////////
+////// Модальное окно изображение
+////////////////
+.modal-img {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 56px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+
+    .modal-content {margin: auto;display: block;width: 80%;max-width: 700px;}
+    #caption {margin: auto;display: block;width: 80%;max-width: 700px;text-align: center;color: #ccc;padding: 10px 0;height: 150px;}
+    /* Добавить анимацию */
+    .modal-content,
+    #caption {animation-name: zoom;animation-duration: 0.6s;}
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+
+        &:hover,
+        &:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* 100% Ширина изображения на меньших экранах */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+.overlay {display: none;}
+
+
+.modal {
+    .comments {
+
+        .top {display: flex;justify-content: space-between;}
+
+        .text {
+            color: #a94442;
+            margin: 0 auto 20px auto;
+            padding: 10px;
+            border: 1px solid #eee;
+            background-color: var(--bs-gray-200);
+            border-radius: 3px;
+        }
+    }
+}
+
+.register-main {
+    form {
+        .form-group {padding: 10px 0;}
+    }
+}
